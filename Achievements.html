@@ -136,11 +136,95 @@
         .blue h2 { background: #1565C0; }
         .green h2 { background: #2E7D32; }
         
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
-        }
+        /*=========================
+      RESPONSIVE GRID
+=========================*/
+
+/* Desktop - 4 cards */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+/* Tablet - 3 cards */
+@media (max-width:992px){
+
+    .grid{
+        grid-template-columns:repeat(3,1fr);
+        gap:20px;
+    }
+
+}
+
+/* Mobile - 2 cards */
+@media (max-width:768px){
+
+    .banner{
+        height:300px;
+    }
+
+    .banner-content{
+        width:90%;
+        padding:25px;
+    }
+
+    .banner-content h1{
+        font-size:38px;
+    }
+
+    .banner-content p{
+        font-size:16px;
+    }
+
+    .icon{
+        display:none;
+    }
+
+    .grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:15px;
+    }
+
+    .card img{
+        height:220px;
+    }
+
+    .card h3{
+        font-size:15px;
+    }
+
+    .card .percentage{
+        font-size:16px;
+    }
+
+}
+
+/* Small Mobile - Still 2 cards */
+@media (max-width:480px){
+
+    .grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+    }
+
+    .card img{
+        height:180px;
+    }
+
+    .card-details{
+        padding:12px 8px;
+    }
+
+    .card h3{
+        font-size:14px;
+    }
+
+    .card .percentage{
+        font-size:15px;
+    }
+
+}
 
         /* Student Cards Updated for Full Portrait Pics */
         .card {
