@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Alumni Connect Gallery</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',Arial,sans-serif;
+}
+
+body{
+    background:#eef5ff;
+    color:#333;
+}
+
+/*==============================
+        STYLISH HERO BANNER
+===============================*/
+
+.banner{
+    position:relative;
+    height:380px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    text-align:center;
+    background:linear-gradient(-45deg,#003366,#0059b3,#0099cc,#00bcd4);
+    background-size:400% 400%;
+    animation:gradient 10s ease infinite;
+}
+
+/* Decorative circles */
+
+.banner::before,
+.banner::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    background:rgba(255,255,255,.08);
+}
+
+.banner::before{
+    width:380px;
+    height:380px;
+    left:-120px;
+    top:-120px;
+}
+
+.banner::after{
+    width:280px;
+    height:280px;
+    right:-70px;
+    bottom:-70px;
+}
+
+/* Floating Icons */
+
+.icon-left,
+.icon-right{
+    position:absolute;
+    color:rgba(255,255,255,.12);
+    font-size:90px;
+    animation:float 5s ease-in-out infinite;
+}
+
+.icon-left{
+    left:8%;
+    top:32%;
+}
+
+.icon-right{
+    right:8%;
+    top:18%;
+    animation-delay:2s;
+}
+
+/* Glass Card */
+
+.banner-content{
+
+    position:relative;
+    z-index:5;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(10px);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    border-radius:25px;
+
+    padding:40px 60px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+
+}
+
+.banner-content h1{
+
+    color:#fff;
+
+    font-size:60px;
+
+    font-weight:800;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    text-shadow:3px 3px 12px rgba(0,0,0,.35);
+
+}
+
+.banner-content p{
+
+    margin-top:18px;
+
+    color:#fff;
+
+    font-size:22px;
+
+    letter-spacing:1px;
+
+}
+
+.gold-line{
+
+    width:120px;
+
+    height:4px;
+
+    margin:20px auto;
+
+    background:#FFD54F;
+
+    border-radius:10px;
+
+}
+
+/* Button */
+
+.btn{
+
+    display:inline-block;
+
+    margin-top:28px;
+
+    padding:14px 35px;
+
+    background:#fff;
+
+    color:#0056b3;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    border-radius:40px;
+
+    transition:.4s;
+
+}
+
+.btn:hover{
+
+    background:#FFD54F;
+
+    transform:translateY(-5px);
+
+}
+
+/* Wave */
+
+.wave{
+
+    position:absolute;
+
+    bottom:0;
+
+    left:0;
+
+    width:100%;
+
+}
+
+/*=========================
+        GALLERY
+=========================*/
+
+.container{
+
+    width:92%;
+
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:50px 0;
+
+}
+
+.gallery{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:22px;
+
+}
+
+.photo-card{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    border:5px solid #0099cc;
+
+    transition:.4s;
+
+    cursor:pointer;
+
+}
+
+.photo-card:hover{
+
+    transform:translateY(-8px) scale(1.03);
+
+    box-shadow:0 15px 30px rgba(0,0,0,.18);
+
+}
+
+.photo-card img{
+
+    width:100%;
+
+    height:260px;
+
+    object-fit:cover;
+
+}
+
+/*====================
+      LIGHTBOX
+====================*/
+
+.popup{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.88);
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:1000;
+
+    backdrop-filter:blur(4px);
+
+}
+
+.popup.active{
+
+    display:flex;
+
+}
+
+.popup img{
+
+    max-width:90%;
+
+    max-height:90%;
+
+    border-radius:10px;
+
+    box-shadow:0 0 30px rgba(255,255,255,.15);
+
+}
+
+.close-btn{
+
+    position:absolute;
+
+    top:20px;
+
+    right:35px;
+
+    color:#fff;
+
+    font-size:55px;
+
+    cursor:pointer;
+
+}
+
+/*====================
+    ANIMATIONS
+====================*/
+
+@keyframes gradient{
+
+0%{background-position:0% 50%;}
+
+50%{background-position:100% 50%;}
+
+100%{background-position:0% 50%;}
+
+}
+
+@keyframes float{
+
+0%,100%{transform:translateY(0);}
+
+50%{transform:translateY(-18px);}
+
+}
+
+/*====================
+    RESPONSIVE
+====================*/
+
+@media(max-width:992px){
+
+.gallery{
+
+grid-template-columns:repeat(3,1fr);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.banner{
+
+height:300px;
+
+}
+
+.banner-content{
+
+width:90%;
+
+padding:25px;
+
+}
+
+.banner-content h1{
+
+font-size:38px;
+
+}
+
+.banner-content p{
+
+font-size:16px;
+
+}
+
+.icon-left,
+
+.icon-right{
+
+display:none;
+
+}
+
+.gallery{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.photo-card img{
+
+height:190px;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.gallery{
+
+grid-template-columns:1fr;
+
+}
+
+.photo-card img{
+
+height:240px;
+
+}
+
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="banner">
+
+<i class="fa-solid fa-user-graduate icon-left"></i>
+
+<i class="fa-solid fa-graduation-cap icon-right"></i>
+
+<div class="banner-content">
+
+<h1>🎓 Alumni Connect</h1>
+
+<div class="gold-line"></div>
+
+<p>Reconnect • Celebrate Memories • Inspire Future Generations</p>
+
+<!-- <a href="#" class="btn">Join Alumni Network</a> -->
+
+</div>
+
+<svg class="wave" viewBox="0 0 1440 170">
+<path fill="#eef5ff"
+d="M0,96L60,106.7C120,117,240,139,360,133.3C480,128,600,96,720,96C840,96,960,128,1080,133.3C1200,139,1320,117,1380,106.7L1440,96L1440,170L0,170Z">
+</path>
+</svg>
+
+</div>
+
+<div class="container">
+
+<div class="gallery" id="gallery">
+
+<div class="photo-card"><img src="Alumni/1.jpeg"></div>
+<div class="photo-card"><img src="Alumni/2.jpeg"></div>
+<div class="photo-card"><img src="Alumni/3.jpeg"></div>
+<div class="photo-card"><img src="Alumni/4.jpeg"></div>
+<div class="photo-card"><img src="Alumni/5.jpeg"></div>
+<div class="photo-card"><img src="Alumni/6.jpeg"></div>
+<div class="photo-card"><img src="Alumni/7.jpeg"></div>
+<div class="photo-card"><img src="Alumni/8.jpeg"></div>
+
+</div>
+
+</div>
+
+<div class="popup" id="popup">
+
+<span class="close-btn" id="closeBtn">&times;</span>
+
+<img id="popupImg">
+
+</div>
+
+<script>
+
+const gallery=document.getElementById("gallery");
+const popup=document.getElementById("popup");
+const popupImg=document.getElementById("popupImg");
+
+gallery.addEventListener("click",e=>{
+
+const img=e.target.closest("img");
+
+if(img){
+
+popup.classList.add("active");
+
+popupImg.src=img.src;
+
+}
+
+});
+
+function closePopup(){
+
+popup.classList.remove("active");
+
+popupImg.src="";
+
+}
+
+document.getElementById("closeBtn").onclick=closePopup;
+
+popup.onclick=e=>{
+
+if(e.target===popup) closePopup();
+
+}
+
+document.addEventListener("keydown",e=>{
+
+if(e.key==="Escape") closePopup();
+
+});
+
+</script>
+
+</body>
+</html>

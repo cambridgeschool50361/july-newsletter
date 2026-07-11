@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sports Arena</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',Arial,sans-serif;
+}
+
+body{
+    background:#eef6ff;
+    color:#333;
+}
+
+/*==========================
+        SPORTS BANNER
+==========================*/
+
+.banner{
+    position:relative;
+    height:400px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    overflow:hidden;
+    background:linear-gradient(-45deg,#006400,#008000,#009688,#ff9800,#ff5722);
+    background-size:400% 400%;
+    animation:gradient 12s ease infinite;
+}
+
+/* Stadium Glow */
+
+.banner::before{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:rgba(255,255,255,.08);
+    border-radius:50%;
+    top:-180px;
+    left:-120px;
+}
+
+.banner::after{
+    content:"";
+    position:absolute;
+    width:320px;
+    height:320px;
+    background:rgba(255,255,255,.08);
+    border-radius:50%;
+    right:-90px;
+    bottom:-90px;
+}
+
+/* Floating Icons */
+
+.icon{
+    position:absolute;
+    color:rgba(255,255,255,.12);
+    animation:float 5s ease-in-out infinite;
+}
+
+.ball1{
+    font-size:90px;
+    left:7%;
+    top:35%;
+}
+
+.ball2{
+    font-size:85px;
+    right:8%;
+    top:20%;
+    animation-delay:1.5s;
+}
+
+.ball3{
+    font-size:70px;
+    left:22%;
+    top:15%;
+    animation-delay:2.5s;
+}
+
+.ball4{
+    font-size:70px;
+    right:22%;
+    bottom:18%;
+    animation-delay:3s;
+}
+
+/* Glass Card */
+
+.banner-content{
+
+    position:relative;
+    z-index:10;
+
+    background:rgba(255,255,255,.12);
+
+    backdrop-filter:blur(12px);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    border-radius:25px;
+
+    padding:45px 70px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+
+}
+
+.banner-content h1{
+
+    color:#fff;
+
+    font-size:60px;
+
+    font-weight:800;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    text-shadow:3px 4px 12px rgba(0,0,0,.35);
+
+}
+
+.banner-content p{
+
+    color:#fff;
+
+    margin-top:18px;
+
+    font-size:22px;
+
+    letter-spacing:1px;
+
+}
+
+.line{
+
+    width:120px;
+
+    height:4px;
+
+    background:#FFD700;
+
+    margin:20px auto;
+
+    border-radius:20px;
+
+}
+
+.btn{
+
+    display:inline-block;
+
+    margin-top:28px;
+
+    text-decoration:none;
+
+    color:#006400;
+
+    background:#fff;
+
+    padding:14px 35px;
+
+    border-radius:40px;
+
+    font-weight:bold;
+
+    transition:.4s;
+
+}
+
+.btn:hover{
+
+    background:#FFD700;
+
+    transform:translateY(-5px);
+
+}
+
+/* Bottom Wave */
+
+.wave{
+    position:absolute;
+    bottom:0;
+    width:100%;
+}
+
+/*==========================
+        GALLERY
+==========================*/
+
+.container{
+
+    width:92%;
+
+    max-width:1250px;
+
+    margin:auto;
+
+    padding:50px 0;
+
+}
+
+.gallery{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:22px;
+
+}
+
+.photo-card{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    border:5px solid #2e8b57;
+
+    cursor:pointer;
+
+    transition:.4s;
+
+}
+
+.photo-card:hover{
+
+    transform:translateY(-8px) scale(1.03);
+
+    box-shadow:0 15px 30px rgba(0,0,0,.18);
+
+}
+
+.photo-card img{
+
+    width:100%;
+
+    height:260px;
+
+    object-fit:cover;
+
+}
+
+/*==========================
+        LIGHTBOX
+==========================*/
+
+.popup{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.88);
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:1000;
+
+    backdrop-filter:blur(5px);
+
+}
+
+.popup.active{
+
+    display:flex;
+
+}
+
+.popup img{
+
+    max-width:90%;
+
+    max-height:90%;
+
+    border-radius:12px;
+
+}
+
+.close-btn{
+
+    position:absolute;
+
+    top:20px;
+
+    right:35px;
+
+    color:#fff;
+
+    font-size:55px;
+
+    cursor:pointer;
+
+}
+
+/*==========================
+        ANIMATIONS
+==========================*/
+
+@keyframes gradient{
+
+0%{background-position:0% 50%;}
+
+50%{background-position:100% 50%;}
+
+100%{background-position:0% 50%;}
+
+}
+
+@keyframes float{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-18px);
+
+}
+
+}
+
+/*==========================
+        RESPONSIVE
+==========================*/
+
+@media(max-width:992px){
+
+.gallery{
+
+grid-template-columns:repeat(3,1fr);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.banner{
+
+height:300px;
+
+}
+
+.banner-content{
+
+width:90%;
+
+padding:25px;
+
+}
+
+.banner-content h1{
+
+font-size:38px;
+
+}
+
+.banner-content p{
+
+font-size:16px;
+
+}
+
+.icon{
+
+display:none;
+
+}
+
+.gallery{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.photo-card img{
+
+height:190px;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.gallery{
+
+grid-template-columns:1fr;
+
+}
+
+.photo-card img{
+
+height:240px;
+
+}
+
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="banner">
+
+<i class="fa-solid fa-futbol icon ball1"></i>
+
+<i class="fa-solid fa-basketball icon ball2"></i>
+
+<i class="fa-solid fa-baseball-bat-ball icon ball3"></i>
+
+<i class="fa-solid fa-trophy icon ball4"></i>
+
+<div class="banner-content">
+
+<h1>🏆 Sports Arena</h1>
+
+<div class="line"></div>
+
+<p>
+Strength • Teamwork • Discipline • Excellence
+</p>
+
+<!-- <a href="#" class="btn">
+Explore Sports
+</a> --!>
+
+</div>
+
+<svg class="wave" viewBox="0 0 1440 170">
+<path fill="#eef6ff"
+d="M0,96L60,106.7C120,117,240,139,360,133.3C480,128,600,96,720,96C840,96,960,128,1080,133.3C1200,139,1320,117,1380,106.7L1440,96L1440,170L0,170Z"></path>
+</svg>
+
+</div>
+
+<div class="container">
+
+<div class="gallery" id="gallery">
+
+<div class="photo-card"><img src="Sports/1.jpg" alt=""></div>
+<div class="photo-card"><img src="Sports/2.jpg" alt=""></div>
+<div class="photo-card"><img src="Sports/3.jpg" alt=""></div>
+<div class="photo-card"><img src="Sports/4.jpg" alt=""></div>
+<div class="photo-card"><img src="Sports/5.jpg" alt=""></div>
+<div class="photo-card"><img src="Sports/6.jpg" alt=""></div>
+<div class="photo-card"><img src="Sports/7.jpg" alt=""></div>
+<div class="photo-card"><img src="Sports/8.jpg" alt=""></div>
+
+</div>
+
+</div>
+
+<div class="popup" id="popup">
+<span class="close-btn" id="closeBtn">&times;</span>
+<img id="popupImg">
+</div>
+
+<script>
+const gallery=document.getElementById("gallery");
+const popup=document.getElementById("popup");
+const popupImg=document.getElementById("popupImg");
+const closeBtn=document.getElementById("closeBtn");
+
+gallery.addEventListener("click",(e)=>{
+const img=e.target.closest("img");
+if(img){
+popup.classList.add("active");
+popupImg.src=img.src;
+}
+});
+
+function closePopup(){
+popup.classList.remove("active");
+popupImg.src="";
+}
+
+closeBtn.onclick=closePopup;
+
+popup.onclick=(e)=>{
+if(e.target===popup){
+closePopup();
+}
+};
+
+document.addEventListener("keydown",(e)=>{
+if(e.key==="Escape"){
+closePopup();
+}
+});
+</script>
+
+</body>
+</html>

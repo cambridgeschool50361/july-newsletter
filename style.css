@@ -264,94 +264,114 @@ nav a:hover{
         ACHIEVEMENTS
 =========================================*/
 
+/* ===========================
+   ACHIEVEMENT SECTION
+=========================== */
+
 .achievement{
-    padding:100px 8%;
+    padding:80px 8%;
     background:#f8fbff;
 }
 
 .achievement-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:35px;
+    grid-template-columns:repeat(4, 1fr);
+    gap:25px;
 }
 
 .card{
-    background:white;
-    padding:40px;
-    border-radius:20px;
+    display:block;
+    text-decoration:none;
+    background:#fff;
+    padding:30px 20px;
+    border-radius:18px;
     text-align:center;
-    transition:.4s;
-    box-shadow:0 15px 30px rgba(0,0,0,.08);
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:all .35s ease;
+    cursor:pointer;
 }
 
 .card:hover{
-    transform:translateY(-12px);
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
 }
 
 .card i{
-    font-size:55px;
+    font-size:48px;
     color:#0057b8;
-    margin-bottom:25px;
+    margin-bottom:15px;
 }
 
 .card h3{
-    margin-bottom:15px;
+    font-size:22px;
     color:#0057b8;
+    margin-bottom:10px;
 }
 
 .card p{
+    font-size:15px;
     color:#666;
+    line-height:1.5;
 }
 
+/* Tablet */
+@media (max-width:992px){
 
-/*=========================================
-        STUDENTS
-=========================================*/
+    .achievement-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
 
-.students{
-    padding:100px 8%;
-    background:#eef5ff;
+    .card{
+        padding:25px 15px;
+    }
+
+    .card i{
+        font-size:40px;
+    }
+
+    .card h3{
+        font-size:20px;
+    }
+
+    .card p{
+        font-size:14px;
+    }
+
 }
 
-.student-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:35px;
+/* Mobile */
+@media (max-width:600px){
+
+    .achievement{
+        padding:50px 5%;
+    }
+
+    .achievement-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:15px;
+    }
+
+    .card{
+        padding:18px 12px;
+    }
+
+    .card i{
+        font-size:32px;
+        margin-bottom:10px;
+    }
+
+    .card h3{
+        font-size:16px;
+        margin-bottom:8px;
+    }
+
+    .card p{
+        font-size:12px;
+        line-height:1.4;
+    }
+
 }
 
-.student-card{
-    background:#fff;
-    border-radius:20px;
-    overflow:hidden;
-    text-align:center;
-    box-shadow:0 15px 30px rgba(0,0,0,.08);
-    transition:.4s;
-}
-
-.student-card:hover{
-    transform:translateY(-10px) scale(1.03);
-}
-
-.student-card img{
-    width:100%;
-    height:300px;
-    object-fit:cover;
-    transition:.4s;
-}
-
-.student-card:hover img{
-    transform:scale(1.08);
-}
-
-.student-card h3{
-    color:#0057b8;
-    margin:20px 0 8px;
-}
-
-.student-card p{
-    color:#666;
-    padding-bottom:25px;
-}
 
 
 /*=========================================
@@ -846,4 +866,63 @@ transition:.8s;
 opacity:1;
 transform:translateY(0);
 
+}
+
+
+
+
+
+
+
+/*================ LIGHTBOX =================*/
+
+.lightbox{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.9);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    backdrop-filter:blur(5px);
+}
+
+.lightbox.active{
+    display:flex;
+}
+
+.lightbox img{
+    max-width:90%;
+    max-height:90%;
+    border-radius:15px;
+    box-shadow:0 0 30px rgba(255,255,255,.2);
+    animation:zoom .3s ease;
+}
+
+.close-lightbox{
+    position:absolute;
+    top:20px;
+    right:35px;
+    color:#fff;
+    font-size:55px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.close-lightbox:hover{
+    color:#FFD700;
+}
+
+@keyframes zoom{
+    from{
+        transform:scale(.7);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
 }

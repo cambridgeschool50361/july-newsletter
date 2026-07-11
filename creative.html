@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creative Corner</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',Arial,sans-serif;
+}
+
+body{
+    background:#fff8f4;
+    color:#333;
+}
+
+/*==============================
+      CREATIVE BANNER
+==============================*/
+
+.banner{
+    position:relative;
+    height:390px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    overflow:hidden;
+    background:linear-gradient(-45deg,#7b2cbf,#ff006e,#ff9f1c,#00c2ff);
+    background-size:400% 400%;
+    animation:gradient 12s ease infinite;
+}
+
+.banner::before,
+.banner::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    background:rgba(255,255,255,.10);
+}
+
+.banner::before{
+    width:420px;
+    height:420px;
+    top:-180px;
+    left:-120px;
+}
+
+.banner::after{
+    width:300px;
+    height:300px;
+    right:-80px;
+    bottom:-80px;
+}
+
+/* Floating Icons */
+
+.icon{
+    position:absolute;
+    color:rgba(255,255,255,.15);
+    animation:float 5s ease-in-out infinite;
+}
+
+.palette{left:7%;top:30%;font-size:90px;}
+.brush{right:8%;top:18%;font-size:80px;animation-delay:1.5s;}
+.pencil{left:22%;top:12%;font-size:65px;animation-delay:2.5s;}
+.star{right:22%;bottom:18%;font-size:70px;animation-delay:3s;}
+
+/* Glass Card */
+
+.banner-content{
+    position:relative;
+    z-index:10;
+    padding:40px 65px;
+    border-radius:25px;
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,.25);
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+}
+
+.banner-content h1{
+    color:#fff;
+    font-size:58px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    text-shadow:3px 4px 12px rgba(0,0,0,.35);
+}
+
+.banner-content p{
+    color:#fff;
+    margin-top:18px;
+    font-size:21px;
+}
+
+.line{
+    width:120px;
+    height:4px;
+    margin:20px auto;
+    border-radius:20px;
+    background:linear-gradient(to right,#FFD700,#ffffff,#00FFFF);
+}
+
+.btn{
+    display:inline-block;
+    margin-top:28px;
+    padding:14px 35px;
+    text-decoration:none;
+    color:#7b2cbf;
+    background:#fff;
+    border-radius:40px;
+    font-weight:bold;
+    transition:.4s;
+}
+
+.btn:hover{
+    background:#FFD700;
+    transform:translateY(-5px);
+}
+
+/* Wave */
+
+.wave{
+    position:absolute;
+    bottom:0;
+    width:100%;
+}
+
+/* Gallery */
+
+.container{
+    width:92%;
+    max-width:1200px;
+    margin:auto;
+    padding:50px 0;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
+}
+
+.photo-card{
+    background:#fff;
+    border:5px solid #ff6b6b;
+    border-radius:18px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:.4s;
+}
+
+.photo-card:hover{
+    transform:translateY(-8px) scale(1.03);
+    box-shadow:0 15px 30px rgba(0,0,0,.18);
+}
+
+.photo-card img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+}
+
+/* Lightbox */
+
+.popup{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.88);
+    justify-content:center;
+    align-items:center;
+    z-index:1000;
+}
+
+.popup.active{
+    display:flex;
+}
+
+.popup img{
+    max-width:90%;
+    max-height:90%;
+    border-radius:10px;
+}
+
+.close-btn{
+    position:absolute;
+    top:20px;
+    right:35px;
+    color:#fff;
+    font-size:55px;
+    cursor:pointer;
+}
+
+/* Animation */
+
+@keyframes gradient{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-18px);}
+}
+
+/* Responsive */
+
+@media(max-width:992px){
+.gallery{
+grid-template-columns:repeat(3,1fr);
+}
+}
+
+@media(max-width:768px){
+
+.banner{
+height:300px;
+}
+
+.banner-content{
+width:90%;
+padding:25px;
+}
+
+.banner-content h1{
+font-size:38px;
+}
+
+.banner-content p{
+font-size:16px;
+}
+
+.icon{
+display:none;
+}
+
+.gallery{
+grid-template-columns:repeat(2,1fr);
+}
+
+.photo-card img{
+height:190px;
+}
+}
+
+@media(max-width:480px){
+.gallery{
+grid-template-columns:1fr;
+}
+.photo-card img{
+height:230px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="banner">
+
+<i class="fa-solid fa-palette icon palette"></i>
+<i class="fa-solid fa-paintbrush icon brush"></i>
+<i class="fa-solid fa-pencil icon pencil"></i>
+<i class="fa-solid fa-star icon star"></i>
+
+<div class="banner-content">
+<h1>🎨 Creative Corner</h1>
+
+<div class="line"></div>
+
+<p>Imagine • Create • Inspire • Express</p>
+
+<!-- <a href="#" class="btn">Explore Creativity</a> --!>
+
+</div>
+
+<svg class="wave" viewBox="0 0 1440 170">
+<path fill="#fff8f4"
+d="M0,96L60,106.7C120,117,240,139,360,133.3C480,128,600,96,720,96C840,96,960,128,1080,133.3C1200,139,1320,117,1380,106.7L1440,96L1440,170L0,170Z"></path>
+</svg>
+
+</div>
+
+<div class="container">
+<div class="gallery" id="gallery">
+
+<div class="photo-card"><img src="Creative/1.jpeg"></div>
+<div class="photo-card"><img src="Creative/2.jpeg"></div>
+<div class="photo-card"><img src="Creative/3.jpeg"></div>
+<div class="photo-card"><img src="Creative/4.jpeg"></div>
+<div class="photo-card"><img src="Creative/5.jpeg"></div>
+<div class="photo-card"><img src="Creative/6.jpeg"></div>
+<div class="photo-card"><img src="Creative/7.jpeg"></div>
+<div class="photo-card"><img src="Creative/8.jpeg"></div>
+
+</div>
+</div>
+
+<div class="popup" id="popup">
+<span class="close-btn" id="closeBtn">&times;</span>
+<img id="popupImg">
+</div>
+
+<script>
+const gallery=document.getElementById("gallery");
+const popup=document.getElementById("popup");
+const popupImg=document.getElementById("popupImg");
+const closeBtn=document.getElementById("closeBtn");
+
+gallery.onclick=(e)=>{
+const img=e.target.closest("img");
+if(img){
+popup.classList.add("active");
+popupImg.src=img.src;
+}
+};
+
+function closePopup(){
+popup.classList.remove("active");
+popupImg.src="";
+}
+
+closeBtn.onclick=closePopup;
+popup.onclick=e=>{if(e.target===popup) closePopup();}
+document.addEventListener("keydown",e=>{if(e.key==="Escape") closePopup();});
+</script>
+
+</body>
+</html>

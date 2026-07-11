@@ -1,64 +1,6 @@
-/*==================================================
-    CAMBRIDGE SCHOOL NEWSLETTER
-    script.js
-==================================================*/
-
-/*==============================
-      Animated Counter
-==============================*/
-
-const counters = document.querySelectorAll(".counter");
-
-const animateCounter = (counter) => {
-
-    const target = +counter.getAttribute("data-target");
-    const speed = 200;
-    const increment = Math.ceil(target / speed);
-
-    let current = 0;
-
-    const update = () => {
-
-        current += increment;
-
-        if (current < target) {
-            counter.innerText = current;
-            requestAnimationFrame(update);
-        } else {
-            counter.innerText = target + "+";
-        }
-
-    };
-
-    update();
-
-};
 
 
-/*==============================
-    Counter on Scroll
-==============================*/
 
-const counterObserver = new IntersectionObserver((entries) => {
-
-    entries.forEach(entry => {
-
-        if (entry.isIntersecting) {
-
-            animateCounter(entry.target);
-            counterObserver.unobserve(entry.target);
-
-        }
-
-    });
-
-}, {
-    threshold: 0.5
-});
-
-counters.forEach(counter => {
-    counterObserver.observe(counter);
-});
 
 
 /*==============================

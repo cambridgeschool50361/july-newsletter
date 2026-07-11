@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Excellence</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f8fc;
+        }
+        /*=========================================
+          ACADEMIC EXCELLENCE BANNER
+        =========================================*/
+        .banner{
+            position:relative;
+            height:390px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            text-align:center;
+            overflow:hidden;
+            background:linear-gradient(
+                -45deg,
+                #001f54,
+                #003b8e,
+                #00509d,
+                #0077b6,
+                #f4b400);
+            background-size:400% 400%;
+            animation:gradient 12s ease infinite;
+        }
+
+        /* Decorative circles */
+        .banner::before,
+        .banner::after{
+            content:"";
+            position:absolute;
+            border-radius:50%;
+            background:rgba(255,255,255,.08);
+        }
+        .banner::before{
+            width:420px;
+            height:420px;
+            left:-140px;
+            top:-160px;
+        }
+        .banner::after{
+            width:300px;
+            height:300px;
+            right:-80px;
+            bottom:-90px;
+        }
+
+        /* Floating Icons */
+        .icon{
+            position:absolute;
+            color:rgba(255,255,255,.13);
+            animation:float 5s ease-in-out infinite;
+        }
+        .icon1{ font-size:95px; left:7%; top:35%; }
+        .icon2{ font-size:85px; right:8%; top:18%; animation-delay:1.5s; }
+        .icon3{ font-size:75px; left:22%; top:14%; animation-delay:2.5s; }
+        .icon4{ font-size:70px; right:22%; bottom:18%; animation-delay:3s; }
+
+        /* Glass Card */
+        .banner-content{
+            position:relative;
+            z-index:10;
+            background:rgba(255,255,255,.12);
+            backdrop-filter:blur(12px);
+            border:1px solid rgba(255,255,255,.25);
+            border-radius:25px;
+            padding:45px 70px;
+            box-shadow:0 15px 40px rgba(0,0,0,.25);
+        }
+        .banner-content h1{
+            color:#fff;
+            font-size:58px;
+            font-weight:800;
+            letter-spacing:3px;
+            text-transform:uppercase;
+            text-shadow:3px 4px 12px rgba(0,0,0,.35);
+        }
+        .banner-content p{
+            color:#fff;
+            margin-top:18px;
+            font-size:22px;
+            letter-spacing:1px;
+        }
+        .line{
+            width:120px;
+            height:4px;
+            background:#FFD700;
+            margin:20px auto;
+            border-radius:20px;
+        }
+
+        /* Wave */
+        .wave{
+            position:absolute;
+            bottom:0;
+            left:0;
+            width:100%;
+        }
+
+        /* Animations */
+        @keyframes gradient{
+            0%{ background-position:0% 50%; }
+            50%{ background-position:100% 50%; }
+            100%{ background-position:0% 50%; }
+        }
+        @keyframes float{
+            0%,100%{ transform:translateY(0); }
+            50%{ transform:translateY(-18px); }
+        }
+
+        /* Grid Layout */
+        .container {
+            width: 92%;
+            margin: auto;
+            padding: 30px 0;
+        }
+        .section {
+            margin: 40px 0;
+        }
+        .section h2 {
+            color: #fff;
+            padding: 14px 18px;
+            border-radius: 10px;
+        }
+        .blue h2 { background: #1565C0; }
+        .green h2 { background: #2E7D32; }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        /* Student Cards Updated for Full Portrait Pics */
+        .card {
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 6px 16px rgba(0,0,0,.12);
+            transition: .3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+        }
+        .card img {
+            width: 100%;
+            height: 340px; /* Increased height to give a full portrait look */
+            object-fit: cover;
+        }
+        .card-details {
+            padding: 15px 10px 20px;
+            text-align: center;
+        }
+        .card h3 {
+            margin: 0 0 8px 0;
+            color: #333;
+            font-size: 18px;
+        }
+        .card .percentage {
+            font-size: 20px;
+            font-weight: bold;
+            color: #0057b8;
+            margin: 0;
+        }
+        .green .card .percentage {
+            color: #2E7D32; /* Match the green theme for Class XII */
+        }
+
+        /* Responsive Design */
+        @media(max-width:992px){
+            .grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 768px) {
+            .banner{ height:300px; }
+            .banner-content{ width:90%; padding:25px; }
+            .banner-content h1{ font-size:38px; }
+            .banner-content p{ font-size:16px; }
+            .icon{ display:none; }
+            
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            .card img {
+                height: 240px;
+            }
+            .card h3 {
+                font-size: 15px;
+            }
+            .card .percentage {
+                font-size: 16px;
+            }
+        }
+        @media (max-width: 480px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="banner">
+    <i class="fa-solid fa-graduation-cap icon icon1"></i>
+    <i class="fa-solid fa-book-open icon icon2"></i>
+    <i class="fa-solid fa-award icon icon3"></i>
+    <i class="fa-solid fa-medal icon icon4"></i>
+
+    <div class="banner-content">
+        <h1>🎓 Academic Excellence</h1>
+        <div class="line"></div>
+        <p>Knowledge • Innovation • Achievement • Success</p>
+    </div>
+
+    <svg class="wave" viewBox="0 0 1440 170">
+        <path fill="#eef6ff" d="M0,96L60,106.7C120,117,240,139,360,133.3C480,128,600,96,720,96C840,96,960,128,1080,133.3C1200,139,1320,117,1380,106.7L1440,96L1440,170L0,170Z"></path>
+    </svg>
+</div>
+
+<div class="container">
+    
+    <section class="section blue">
+        <h2>Class X Board Toppers</h2>
+        <div class="grid">
+            
+            <div class="card">
+                <img src="Academics/1.jpeg" alt="Aashi Jain">
+                <div class="card-details">
+                    <h3>Virat Gupta</h3>
+                    <p class="percentage">96%</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Academics/2.jpeg" alt="Student 2">
+                <div class="card-details">
+                    <h3>Raj Rawat</h3>
+                    <p class="percentage">93.8%</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Academics/3.jpeg" alt="Student 3">
+                <div class="card-details">
+                    <h3>Kavyansh Sharma</h3>
+                    <p class="percentage">93.6%</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Academics/4.jpeg" alt="Student 4">
+                <div class="card-details">
+                    <h3>Jagrat Sahu</h3>
+                    <p class="percentage">93.2%</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Academics/5.jpeg" alt="Student 5">
+                <div class="card-details">
+                    <h3>Samiksha Sharma</h3>
+                    <p class="percentage">93.2%</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Academics/6.jpeg" alt="Student 6">
+                <div class="card-details">
+                    <h3>Chahat Singh</h3>
+                    <p class="percentage">93%</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Academics/7.jpeg" alt="Student 7">
+                <div class="card-details">
+                    <h3>Samad Khan</h3>
+                    <p class="percentage">92%</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Academics/8.jpeg" alt="Student 8">
+                <div class="card-details">
+                    <h3>Hirdyansh Chourasiya</h3>
+                    <p class="percentage">91%</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section green">
+        <h2>Class XII Board Toppers</h2>
+        <div class="grid">
+            
+            <div class="card">
+                <img src="Academics/9.jpeg" alt="Student 9">
+                <div class="card-details">
+                    <h3>Aashi Jain</h3>
+                    <p class="percentage">95.4% (Comm.)</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Academics/10.jpeg" alt="Student 10">
+                <div class="card-details">
+                    <h3>Nikita Kushwah</h3>
+                    <p class="percentage">95% (Comm.)</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Academics/11.jpeg" alt="Student 11">
+                <div class="card-details">
+                    <h3>Tanvi Gupta</h3>
+                    <p class="percentage">94.8% (Comm.)</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Academics/12.jpeg" alt="Student 12">
+                <div class="card-details">
+                    <h3>Prisha Jain</h3>
+                    <p class="percentage">93% (PCB)</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Academics/13.jpeg" alt="Student 13">
+                <div class="card-details">
+                    <h3>Divyansh Rajoriya </h3>
+                    <p class="percentage">92.6% (PCB)</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Academics/14.jpeg" alt="Student 14">
+                <div class="card-details">
+                    <h3>Nishi Gill</h3>
+                    <p class="percentage">92.2% (Comm.)</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Academics/15.jpeg" alt="Student 15">
+                <div class="card-details">
+                    <h3>Dhruv Shakya</h3>
+                    <p class="percentage">91% ( Comm.)</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="Academics/16.jpeg" alt="Student 16">
+                <div class="card-details">
+                    <h3>Prabhgun Singh</h3>
+                    <p class="percentage">90.2% (Comm.)</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</div>
+
+</body>
+</html>
