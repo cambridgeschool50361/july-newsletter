@@ -3,482 +3,924 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Academic Excellence</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>Academic Excellence | Premium Showcase</title>
+    <!-- Font Awesome for premium icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        body {
+        /* ==========================================
+           1. DESIGN TOKENS & VARIABLES
+        ========================================== */
+        :root {
+            --primary-grad: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            --gold-grad: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            --silver-grad: linear-gradient(135deg, #757f9a, #d7dde8);
+            --bronze-grad: linear-gradient(135deg, #804a00, #ffc47d, #995c00);
+            --accent-grad: linear-gradient(135deg, #11998e, #38ef7d);
+            --glass-bg: rgba(255, 255, 255, 0.06);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --card-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            --glow-shadow: 0 0 25px rgba(56, 239, 125, 0.35);
+            --text-main: #f5f7fa;
+            --text-dark: #1e293b;
+            --font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --transition-smooth: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* ==========================================
+           2. RESET & BASE STYLES
+        ========================================== */
+        * {
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f8fc;
-        }
-        /*=========================================
-          ACADEMIC EXCELLENCE BANNER
-        =========================================*/
-        .banner{
-            position:relative;
-            height:390px;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            text-align:center;
-            overflow:hidden;
-            background:linear-gradient(
-                -45deg,
-                #001f54,
-                #003b8e,
-                #00509d,
-                #0077b6,
-                #f4b400);
-            background-size:400% 400%;
-            animation:gradient 12s ease infinite;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        /* Decorative circles */
-        .banner::before,
-        .banner::after{
-            content:"";
-            position:absolute;
-            border-radius:50%;
-            background:rgba(255,255,255,.08);
-        }
-        .banner::before{
-            width:420px;
-            height:420px;
-            left:-140px;
-            top:-160px;
-        }
-        .banner::after{
-            width:300px;
-            height:300px;
-            right:-80px;
-            bottom:-90px;
+        body {
+            font-family: var(--font-family);
+            background-color: #0b0f19;
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        /* Floating Icons */
-        .icon{
-            position:absolute;
-            color:rgba(255,255,255,.13);
-            animation:float 5s ease-in-out infinite;
-        }
-        .icon1{ font-size:95px; left:7%; top:35%; }
-        .icon2{ font-size:85px; right:8%; top:18%; animation-delay:1.5s; }
-        .icon3{ font-size:75px; left:22%; top:14%; animation-delay:2.5s; }
-        .icon4{ font-size:70px; right:22%; bottom:18%; animation-delay:3s; }
-
-        /* Glass Card */
-        .banner-content{
-            position:relative;
-            z-index:10;
-            background:rgba(255,255,255,.12);
-            backdrop-filter:blur(12px);
-            border:1px solid rgba(255,255,255,.25);
-            border-radius:25px;
-            padding:45px 70px;
-            box-shadow:0 15px 40px rgba(0,0,0,.25);
-        }
-        .banner-content h1{
-
-    color:#fff;
-
-    font-size:60px;
-
-    font-weight:800;
-
-    letter-spacing:3px;
-
-    text-transform:uppercase;
-
-    text-shadow:3px 4px 12px rgba(0,0,0,.35);
- white-space:nowrap;
-
-
-}
-
-.banner-content p{
-
-    color:#fff;
-
-    margin-top:18px;
-
-    font-size:22px;
-
-    letter-spacing:1px;
- white-space:nowrap;
-
-
-}
-
-        .line{
-            width:120px;
-            height:4px;
-            background:#FFD700;
-            margin:20px auto;
-            border-radius:20px;
-        }
-
-        /* Wave */
-        .wave{
-            position:absolute;
-            bottom:0;
-            left:0;
-            width:100%;
-        }
-
-        /* Animations */
-        @keyframes gradient{
-            0%{ background-position:0% 50%; }
-            50%{ background-position:100% 50%; }
-            100%{ background-position:0% 50%; }
-        }
-        @keyframes float{
-            0%,100%{ transform:translateY(0); }
-            50%{ transform:translateY(-18px); }
-        }
-
-        /* Grid Layout */
-        .container {
-            width: 92%;
-            margin: auto;
-            padding: 30px 0;
-        }
-        .section {
-            margin: 40px 0;
-        }
-        .section h2 {
-            color: #fff;
-            padding: 14px 18px;
-            border-radius: 10px;
-        }
-        .blue h2 { background: #1565C0; }
-        .green h2 { background: #2E7D32; }
-        
-        /*=========================
-      RESPONSIVE GRID
-=========================*/
-
-/* Desktop - 4 cards */
-.grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:25px;
-}
-
-/* Tablet - 3 cards */
-@media (max-width:992px){
-
-    .grid{
-        grid-template-columns:repeat(4,1fr);
-        gap:20px;
-    }
-
-}
-
-/* Mobile - 2 cards */
-@media (max-width:768px){
-
-    .banner{
-        height:300px;
-    }
-
-    .banner-content{
-        width:90%;
-        padding:25px;
-    }
-
-    .banner-content h1{
-        font-size:38px;
-    }
-
-    .banner-content p{
-        font-size:16px;
-    }
-
-    .icon{
-        display:none;
-    }
-
-    .grid{
-        grid-template-columns:repeat(3,1fr);
-        gap:15px;
-    }
-
-    .card img{
-        height:220px;
-    }
-
-    .card h3{
-        font-size:15px;
-    }
-
-    .card .percentage{
-        font-size:16px;
-    }
-
-}
-
-/* Small Mobile - Still 2 cards */
-@media (max-width:480px){
-
-    .grid{
-        grid-template-columns:repeat(2,1fr);
-        gap:12px;
-    }
-
-    .card img{
-        height:180px;
-    }
-
-    .card-details{
-        padding:12px 8px;
-    }
-
-    .card h3{
-        font-size:14px;
-    }
-
-    .card .percentage{
-        font-size:15px;
-    }
-
-}
-
-        /* Student Cards Updated for Full Portrait Pics */
-        .card {
-            background: #fff;
-            border-radius: 14px;
+        /* ==========================================
+           3. BACKGROUND PARTICLES & SHAPES
+        ========================================== */
+        .bg-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
             overflow: hidden;
-            box-shadow: 0 6px 16px rgba(0,0,0,.12);
-            transition: .3s;
+            pointer-events: none;
+        }
+
+        .bubble {
+            position: absolute;
+            background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 50%;
+            animation: float Up 20s infinite linear;
+            bottom: -150px;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.4; }
+            90% { opacity: 0.4; }
+            100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* ==========================================
+           4. HERO BANNER
+        ========================================== */
+        .hero-banner {
+            position: relative;
+            min-height: 75vh;
             display: flex;
-            flex-direction: column;
-        }
-        .card:hover {
-            transform: translateY(-6px);
-        }
-        .card img {
-            width: 100%;
-            height: 340px; /* Increased height to give a full portrait look */
-            object-fit: cover;
-        }
-        .card-details {
-            padding: 15px 10px 20px;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-grad);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            padding: 40px 20px 120px 20px;
+            overflow: hidden;
             text-align: center;
         }
-        .card h3 {
-            margin: 0 0 8px 0;
-            color: #333;
-            font-size: 18px;
-        }
-        .card .percentage {
-            font-size: 20px;
-            font-weight: bold;
-            color: #0057b8;
-            margin: 0;
-        }
-        .green .card .percentage {
-            color: #2E7D32; /* Match the green theme for Class XII */
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        /* Responsive Design */
-        @media(max-width:992px){
-            .grid {
-                grid-template-columns: repeat(3, 1fr);
+        .floating-icons i {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.06);
+            animation: pulseIcon 6s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes pulseIcon {
+            0%, 100% { transform: scale(1) translateY(0); opacity: 0.3; }
+            50% { transform: scale(1.15) translateY(-15px); opacity: 0.7; }
+        }
+
+        .glass-title-box {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            padding: 50px 80px;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            max-width: 900px;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards 0.2s;
+        }
+
+        .glass-title-box h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #ffffff 30%, #a5b4fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-title-box p {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 500;
+        }
+
+        .wave-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .wave-bottom svg {
+            position: relative;
+            display: block;
+            width: calc(130% + 1.3px);
+            height: 90px;
+            transform: rotateY(180deg);
+        }
+
+        .wave-bottom .shape-fill {
+            fill: #0b0f19;
+        }
+
+        /* ==========================================
+           5. ACADEMIC SECTIONS & HEADINGS
+        ========================================== */
+        .section-container {
+            max-width: 1400px;
+            margin: 60px auto 100px auto;
+            padding: 0 40px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition-smooth);
+        }
+
+        .section-container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-heading h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: inline-block;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-heading h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent-grad);
+            border-radius: 2px;
+        }
+
+        /* ==========================================
+           6. SLIDER / CAROUSEL FRAMEWORK
+        ========================================== */
+        .slider-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .slider-container {
+            overflow: hidden;
+            width: 100%;
+            padding: 25px 0;
+            cursor: grab;
+        }
+
+        .slider-container:active {
+            cursor: grabbing;
+        }
+
+        .slider-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: transform;
+        }
+
+        /* ==========================================
+           7. PREMIUM STUDENT CARDS
+        ========================================== */
+        .student-card-slide {
+            flex: 0 0 25%; /* Default: 4 items on Desktop */
+            padding: 0 15px;
+            box-sizing: border-box;
+        }
+
+        .student-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition-smooth);
+            text-align: center;
+            padding-bottom: 25px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+        }
+
+        /* Card Hover Effects */
+        .student-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            border-color: rgba(56, 239, 125, 0.4);
+            box-shadow: var(--glow-shadow);
+        }
+
+        /* Image Optimization Containers */
+        .img-container {
+            width: 100%;
+            padding-top: 115%; /* Premium Golden Ratio-esque Aspect Ratio */
+            position: relative;
+            overflow: hidden;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .img-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease;
+            opacity: 0;
+        }
+
+        .img-container img.loaded {
+            opacity: 1;
+        }
+
+        .student-card:hover .img-container img {
+            transform: scale(1.08);
+        }
+
+        /* Rank Ribbons */
+        .rank-ribbon {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #fff;
+            z-index: 2;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .rank-1 { background: var(--gold-grad); color: #2d1f00; text-shadow: 0 1px 0 rgba(255,255,255,0.4); }
+        .rank-2 { background: var(--silver-grad); color: #1e293b; }
+        .rank-3 { background: var(--bronze-grad); color: #fff; }
+        .rank-gen { background: rgba(30, 41, 59, 0.85); border: 1px solid rgba(255,255,255,0.1); }
+
+        /* Card Typography */
+        .info-container {
+            padding: 20px 15px 0 15px;
+            width: 100%;
+        }
+
+        .student-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .student-stream {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #94a3b8;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        /* Percentage Badge */
+        .percentage-badge {
+            display: inline-block;
+            padding: 8px 18px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50px;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #38ef7d;
+            transition: var(--transition-smooth);
+        }
+
+        .student-card:hover .percentage-badge {
+            background: var(--accent-grad);
+            color: #0b0f19;
+            box-shadow: 0 0 15px rgba(56, 239, 125, 0.5);
+            border-color: transparent;
+        }
+
+        /* ==========================================
+           8. NAVIGATION CONTROLS (Arrows & Dots)
+        ========================================== */
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--glass-border);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: var(--transition-smooth);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .nav-btn:hover {
+            background: var(--accent-grad);
+            color: #0b0f19;
+            box-shadow: 0 0 20px rgba(56, 239, 125, 0.4);
+            border-color: transparent;
+        }
+
+        .nav-btn.prev { left: -25px; }
+        .nav-btn.next { right: -25px; }
+
+        .pagination-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 25px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .dot.active {
+            background: #38ef7d;
+            width: 28px;
+            border-radius: 5px;
+        }
+
+        /* ==========================================
+           9. CORE ANIMATIONS
+        ========================================== */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
+
+        /* ==========================================
+           10. MOBILE & TABLET RESPONSIVENESS
+        ========================================== */
+        @media (max-width: 1200px) {
+            .student-card-slide { flex: 0 0 33.333%; } /* 3 items on Tablet */
+            .glass-title-box { padding: 40px 40px; }
+            .glass-title-box h1 { font-size: 2.8rem; }
+        }
+
         @media (max-width: 768px) {
-            .banner{ height:300px; }
-            .banner-content{ width:90%; padding:25px; }
-            .banner-content h1{ font-size:38px; }
-            .banner-content p{ font-size:16px; }
-            .icon{ display:none; }
-            
-            .grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
-            }
-            .card img {
-                height: 240px;
-            }
-            .card h3 {
-                font-size: 15px;
-            }
-            .card .percentage {
-                font-size: 16px;
-            }
-        }
-        @media (max-width: 480px) {
-            .grid {
-                grid-template-columns: repeat(4,1fr);
-            }
+            .student-card-slide { flex: 0 0 50%; } /* EXACTLY 2 items on Mobile */
+            .section-container { padding: 0 20px; margin: 40px auto 60px auto; }
+            .glass-title-box { padding: 30px 20px; }
+            .glass-title-box h1 { font-size: 2.1rem; }
+            .glass-title-box p { font-size: 0.95rem; letter-spacing: 2px; }
+            .nav-btn { display: none; } /* Rely on touch/swipe/dots on mobile */
+            .section-heading h2 { font-size: 1.85rem; }
         }
     </style>
 </head>
 <body>
 
-<div class="banner">
-    <i class="fa-solid fa-graduation-cap icon icon1"></i>
-    <i class="fa-solid fa-book-open icon icon2"></i>
-    <i class="fa-solid fa-award icon icon3"></i>
-    <i class="fa-solid fa-medal icon icon4"></i>
+    <!-- Ambient Animation Particles -->
+    <div class="bg-particles" id="particlesContainer"></div>
 
-    <div class="banner-content">
-        <h1>🎓 Academic Excellence</h1>
-        <div class="line"></div>
-        <p>Knowledge • Innovation • Achievement • Success</p>
-    </div>
-
-    <svg class="wave" viewBox="0 0 1440 170">
-        <path fill="#eef6ff" d="M0,96L60,106.7C120,117,240,139,360,133.3C480,128,600,96,720,96C840,96,960,128,1080,133.3C1200,139,1320,117,1380,106.7L1440,96L1440,170L0,170Z"></path>
-    </svg>
-</div>
-
-<div class="container">
-    
-    <section class="section blue">
-        <h2>Class X Board Toppers</h2>
-        <div class="grid">
-            
-            <div class="card">
-                <img src="Academics/1.jpeg" alt="Aashi Jain">
-                <div class="card-details">
-                    <h3>Virat Gupta</h3>
-                    <p class="percentage">96%</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="Academics/2.jpeg" alt="Student 2">
-                <div class="card-details">
-                    <h3>Raj Rawat</h3>
-                    <p class="percentage">93.8%</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="Academics/3.jpeg" alt="Student 3">
-                <div class="card-details">
-                    <h3>Kavyansh Sharma</h3>
-                    <p class="percentage">93.6%</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="Academics/4.jpeg" alt="Student 4">
-                <div class="card-details">
-                    <h3>Jagrat Sahu</h3>
-                    <p class="percentage">93.2%</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="Academics/5.jpeg" alt="Student 5">
-                <div class="card-details">
-                    <h3>Samiksha Sharma</h3>
-                    <p class="percentage">93.2%</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="Academics/6.jpeg" alt="Student 6">
-                <div class="card-details">
-                    <h3>Chahat Singh</h3>
-                    <p class="percentage">93%</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="Academics/7.jpeg" alt="Student 7">
-                <div class="card-details">
-                    <h3>Samad Khan</h3>
-                    <p class="percentage">92%</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="Academics/8.jpeg" alt="Student 8">
-                <div class="card-details">
-                    <h3>Hirdyansh Chourasiya</h3>
-                    <p class="percentage">91%</p>
-                </div>
-            </div>
-
+    <!-- Hero Banner -->
+    <header class="hero-banner">
+        <div class="floating-icons" id="floatingIcons"></div>
+        <div class="glass-title-box">
+            <h1>🎓 Academic Excellence</h1>
+            <p>Knowledge • Innovation • Achievement • Success</p>
         </div>
-    </section>
-
-    <section class="section green">
-        <h2>Class XII Board Toppers</h2>
-        <div class="grid">
-            
-            <div class="card">
-                <img src="Academics/9.jpeg" alt="Student 9">
-                <div class="card-details">
-                    <h3>Aashi Jain</h3>
-                    <p class="percentage">95.4% (Comm.)</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="Academics/10.jpeg" alt="Student 10">
-                <div class="card-details">
-                    <h3>Nikita Kushwah</h3>
-                    <p class="percentage">95% (Comm.)</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="Academics/11.jpeg" alt="Student 11">
-                <div class="card-details">
-                    <h3>Tanvi Gupta</h3>
-                    <p class="percentage">94.8% (Comm.)</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="Academics/12.jpeg" alt="Student 12">
-                <div class="card-details">
-                    <h3>Prisha Jain</h3>
-                    <p class="percentage">93% (PCB)</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="Academics/13.jpeg" alt="Student 13">
-                <div class="card-details">
-                    <h3>Divyansh Rajoriya </h3>
-                    <p class="percentage">92.6% (PCB)</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="Academics/14.jpeg" alt="Student 14">
-                <div class="card-details">
-                    <h3>Nishi Gill</h3>
-                    <p class="percentage">92.2% (Comm.)</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="Academics/15.jpeg" alt="Student 15">
-                <div class="card-details">
-                    <h3>Dhruv Shakya</h3>
-                    <p class="percentage">91% ( Comm.)</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <img src="Academics/16.jpeg" alt="Student 16">
-                <div class="card-details">
-                    <h3>Prabhgun Singh</h3>
-                    <p class="percentage">90.2% (Comm.)</p>
-                </div>
-            </div>
-
+        <div class="wave-bottom">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" preserveAspectRatio="none">
+                <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V1200H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+            </svg>
         </div>
-    </section>
+    </header>
 
-</div>
+    <!-- MAIN ACADEMIC SHOWCASE CONTENT -->
+    <main>
+        
+        <!-- SECTION 1: CLASS X TOPPERS -->
+        <section class="section-container" id="section-class-x">
+            <div class="section-heading">
+                <h2>Class X Board Toppers</h2>
+            </div>
+            
+            <div class="slider-wrapper">
+                <button class="nav-btn prev" aria-label="Previous Slide"><i class="fas fa-chevron-left"></i></button>
+                <div class="slider-container" id="slider-x">
+                    <div class="slider-track">
+                        
+                        <!-- Card 1 -->
+                        <div class="student-card-slide">
+                            <div class="student-card">
+                                <div class="rank-ribbon rank-1"><i class="fas fa-medal"></i> Rank 1</div>
+                                <div class="img-container">
+                                    <img src="images/student1.jpg" alt="Aarav Sharma" loading="lazy">
+                                </div>
+                                <div class="info-container">
+                                    <h3 class="student-name">Aarav Sharma</h3>
+                                    <span class="percentage-badge">99.4%</span>
+                                </div>
+                            </div>
+                        </div>
 
+                        <!-- Card 2 -->
+                        <div class="student-card-slide">
+                            <div class="student-card">
+                                <div class="rank-ribbon rank-2"><i class="fas fa-medal"></i> Rank 2</div>
+                                <div class="img-container">
+                                    <img src="images/student2.jpg" alt="Diya Patel" loading="lazy">
+                                </div>
+                                <div class="info-container">
+                                    <h3 class="student-name">Diya Patel</h3>
+                                    <span class="percentage-badge">98.8%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="student-card-slide">
+                            <div class="student-card">
+                                <div class="rank-ribbon rank-3"><i class="fas fa-medal"></i> Rank 3</div>
+                                <div class="img-container">
+                                    <img src="images/student3.jpg" alt="Sai Verma" loading="lazy">
+                                </div>
+                                <div class="info-container">
+                                    <h3 class="student-name">Sai Verma</h3>
+                                    <span class="percentage-badge">98.2%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="student-card-slide">
+                            <div class="student-card">
+                                <div class="rank-ribbon rank-gen">🏅 Rank 4</div>
+                                <div class="img-container">
+                                    <img src="images/student4.jpg" alt="Isha Gupta" loading="lazy">
+                                </div>
+                                <div class="info-container">
+                                    <h3 class="student-name">Isha Gupta</h3>
+                                    <span class="percentage-badge">97.6%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 5 -->
+                        <div class="student-card-slide">
+                            <div class="student-card">
+                                <div class="rank-ribbon rank-gen">🏅 Rank 5</div>
+                                <div class="img-container">
+                                    <img src="images/student5.jpg" alt="Kabir Mehta" loading="lazy">
+                                </div>
+                                <div class="info-container">
+                                    <h3 class="student-name">Kabir Mehta</h3>
+                                    <span class="percentage-badge">97.4%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <button class="nav-btn next" aria-label="Next Slide"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="pagination-dots"></div>
+        </section>
+
+
+        <!-- SECTION 2: CLASS XII TOPPERS -->
+        <section class="section-container" id="section-class-xii">
+            <div class="section-heading">
+                <h2>Class XII Board Toppers</h2>
+            </div>
+            
+            <div class="slider-wrapper">
+                <button class="nav-btn prev" aria-label="Previous Slide"><i class="fas fa-chevron-left"></i></button>
+                <div class="slider-container" id="slider-xii">
+                    <div class="slider-track">
+                        
+                        <!-- Card 1 -->
+                        <div class="student-card-slide">
+                            <div class="student-card">
+                                <div class="rank-ribbon rank-1"><i class="fas fa-medal"></i> Rank 1</div>
+                                <div class="img-container">
+                                    <img src="images/student6.jpg" alt="Ananya Nair" loading="lazy">
+                                </div>
+                                <div class="info-container">
+                                    <h3 class="student-name">Ananya Nair</h3>
+                                    <div class="student-stream">Science</div>
+                                    <span class="percentage-badge">99.6%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="student-card-slide">
+                            <div class="student-card">
+                                <div class="rank-ribbon rank-2"><i class="fas fa-medal"></i> Rank 2</div>
+                                <div class="img-container">
+                                    <img src="images/student7.jpg" alt="Rohan Das" loading="lazy">
+                                </div>
+                                <div class="info-container">
+                                    <h3 class="student-name">Rohan Das</h3>
+                                    <div class="student-stream">Commerce</div>
+                                    <span class="percentage-badge">99.0%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="student-card-slide">
+                            <div class="student-card">
+                                <div class="rank-ribbon rank-3"><i class="fas fa-medal"></i> Rank 3</div>
+                                <div class="img-container">
+                                    <img src="images/student8.jpg" alt="Meera Sen" loading="lazy">
+                                </div>
+                                <div class="info-container">
+                                    <h3 class="student-name">Meera Sen</h3>
+                                    <div class="student-stream">Humanities</div>
+                                    <span class="percentage-badge">98.4%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="student-card-slide">
+                            <div class="student-card">
+                                <div class="rank-ribbon rank-gen">🏅 Rank 4</div>
+                                <div class="img-container">
+                                    <img src="images/student9.jpg" alt="Arjun Reddy" loading="lazy">
+                                </div>
+                                <div class="info-container">
+                                    <h3 class="student-name">Arjun Reddy</h3>
+                                    <div class="student-stream">Science</div>
+                                    <span class="percentage-badge">98.0%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <button class="nav-btn next" aria-label="Next Slide"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="pagination-dots"></div>
+        </section>
+
+    </main>
+
+    <!-- ==========================================
+       VANILLA JAVASCRIPT ENGINE
+    ========================================== -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            initBackgroundAssets();
+            initLazyImageReveal();
+            initScrollAnimations();
+            
+            // Build independent sliders
+            const sliderX = new PremiumSlider(document.getElementById('section-class-x'));
+            const sliderXII = new PremiumSlider(document.getElementById('section-class-xii'));
+        });
+
+        /* ==========================================
+           BACKGROUND & FLOATING DECORATIONS
+        ========================================== */
+        function initBackgroundAssets() {
+            const pContainer = document.getElementById('particlesContainer');
+            const particleCount = 15;
+            for(let i=0; i<particleCount; i++) {
+                const bubble = document.createElement('div');
+                bubble.classList.add('bubble');
+                const size = Math.random() * 60 + 20;
+                bubble.style.width = `${size}px`;
+                bubble.style.height = `${size}px`;
+                bubble.style.left = `${Math.random() * 100}vw`;
+                bubble.style.animationDuration = `${Math.random() * 12 + 10}s`;
+                bubble.style.animationDelay = `${Math.random() * 8}s`;
+                pContainer.appendChild(bubble);
+            }
+
+            const iconsContainer = document.getElementById('floatingIcons');
+            const iconClasses = ['fa-graduation-cap', 'fa-book', 'fa-award', 'fa-lightbulb', 'fa-microscope', 'fa-certificate'];
+            iconClasses.forEach(icon => {
+                const iTag = document.createElement('i');
+                iTag.className = `fas ${icon}`;
+                iTag.style.top = `${Math.random() * 60 + 10}%`;
+                iTag.style.left = `${Math.random() * 85 + 5}%`;
+                iTag.style.fontSize = `${Math.random() * 1.5 + 1.5}rem`;
+                iTag.style.animationDelay = `${Math.random() * 4}s`;
+                iconsContainer.appendChild(iTag);
+            });
+        }
+
+        /* ==========================================
+           LAZY LOADING IMAGES WITH SMOOTH REVEAL
+        ========================================== */
+        function initLazyImageReveal() {
+            const images = document.querySelectorAll('.img-container img');
+            const imgOptions = { threshold: 0.1, rootMargin: "0px 0px 20px 0px" };
+
+            const imgObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    const img = entry.target;
+                    img.src = img.getAttribute('src');
+                    img.onload = () => img.classList.add('loaded');
+                    observer.unobserve(img);
+                });
+            }, imgOptions);
+
+            images.forEach(img => imgObserver.observe(img));
+        }
+
+        /* ==========================================
+           SCROLL REVEAL ANIMATION MECHANISM
+        ========================================== */
+        function initScrollAnimations() {
+            const sections = document.querySelectorAll('.section-container');
+            const sectionOptions = { threshold: 0.08, rootMargin: "0px" };
+
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Micro-interaction waterfall for children cards
+                        const cards = entry.target.querySelectorAll('.student-card-slide');
+                        cards.forEach((card, idx) => {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            card.style.transition = `all 0.6s cubic-bezier(0.25, 1, 0.5, 1) ${idx * 0.1}s`;
+                            requestAnimationFrame(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            });
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, sectionOptions);
+
+            sections.forEach(sec => sectionObserver.observe(sec));
+        }
+
+        /* ==========================================
+           ENCAPSULATED PREMIUM SLIDER ENGINE
+        ========================================== */
+        class PremiumSlider {
+            constructor(sectionElement) {
+                this.section = sectionElement;
+                this.container = sectionElement.querySelector('.slider-container');
+                this.track = sectionElement.querySelector('.slider-track');
+                this.slides = Array.from(sectionElement.querySelectorAll('.student-card-slide'));
+                this.btnPrev = sectionElement.querySelector('.nav-btn.prev');
+                this.btnNext = sectionElement.querySelector('.nav-btn.next');
+                this.dotsContainer = sectionElement.querySelector('.pagination-dots');
+
+                this.currentIndex = 0;
+                this.cardsVisible = 4;
+                this.isDragging = false;
+                this.startX = 0;
+                this.currentTranslate = 0;
+                this.prevTranslate = 0;
+                this.animationId = 0;
+                this.autoSlideTimer = null;
+
+                this.init();
+            }
+
+            init() {
+                this.updateCardsVisible();
+                this.buildPagination();
+                this.updateSliderPosition();
+
+                // Window Resize handling
+                window.addEventListener('resize', () => {
+                    this.updateCardsVisible();
+                    this.buildPagination();
+                    this.updateSliderPosition();
+                });
+
+                // Control Action Hookups
+                this.btnNext.addEventListener('click', () => this.nextSlide());
+                this.btnPrev.addEventListener('click', () => this.prevSlide());
+
+                // Slider Autoplay & Pause Conditions
+                this.startAutoplay();
+                this.container.addEventListener('mouseenter', () => this.stopAutoplay());
+                this.container.addEventListener('mouseleave', () => this.startAutoplay());
+
+                // Touch & Drag Support
+                this.container.addEventListener('mousedown', (e) => this.dragStart(e));
+                this.container.addEventListener('touchstart', (e) => this.dragStart(e), { passive: true });
+                this.container.addEventListener('mousemove', (e) => this.dragMove(e));
+                this.container.addEventListener('touchmove', (e) => this.dragMove(e), { passive: true });
+                this.container.addEventListener('mouseup', () => this.dragEnd());
+                this.container.addEventListener('mouseleave', () => { if(this.isDragging) this.dragEnd(); });
+                this.container.addEventListener('touchend', () => this.dragEnd());
+
+                // Accessibility Keyboard Navigation
+                window.addEventListener('keydown', (e) => {
+                    const rect = this.container.getBoundingClientRect();
+                    const inView = (rect.top >= 0 && rect.bottom <= window.innerHeight);
+                    if (inView) {
+                        if (e.key === 'ArrowRight') this.nextSlide();
+                        if (e.key === 'ArrowLeft') this.prevSlide();
+                    }
+                });
+            }
+
+            updateCardsVisible() {
+                const width = window.innerWidth;
+                if (width <= 768) this.cardsVisible = 2; // Fixed requirement: exactly 2
+                else if (width <= 1200) this.cardsVisible = 3;
+                else this.cardsVisible = 4;
+            }
+
+            getMaxIndex() {
+                return Math.max(0, this.slides.length - this.cardsVisible);
+            }
+
+            buildPagination() {
+                this.dotsContainer.innerHTML = '';
+                const totalDots = this.getMaxIndex() + 1;
+                
+                if (totalDots <= 1) return; // No dots required if all match scale layout
+
+                for (let i = 0; i < totalDots; i++) {
+                    const dot = document.createElement('div');
+                    dot.classList.add('dot');
+                    if (i === this.currentIndex) dot.classList.add('active');
+                    dot.addEventListener('click', () => this.goToIndex(i));
+                    this.dotsContainer.appendChild(dot);
+                }
+            }
+
+            updateDots() {
+                const dots = this.dotsContainer.querySelectorAll('.dot');
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === this.currentIndex);
+                });
+            }
+
+            updateSliderPosition() {
+                const cardWidth = this.container.offsetWidth / this.cardsVisible;
+                this.currentTranslate = -this.currentIndex * cardWidth;
+                this.prevTranslate = this.currentTranslate;
+                this.track.style.transform = `translateX(${this.currentTranslate}px)`;
+                this.updateDots();
+            }
+
+            nextSlide() {
+                const maxIdx = this.getMaxIndex();
+                if (this.currentIndex >= maxIdx) {
+                    this.currentIndex = 0; // Infinite loop back
+                } else {
+                    this.currentIndex++;
+                }
+                this.updateSliderPosition();
+            }
+
+            prevSlide() {
+                if (this.currentIndex === 0) {
+                    this.currentIndex = this.getMaxIndex(); // Infinite loop forward
+                } else {
+                    this.currentIndex--;
+                }
+                this.updateSliderPosition();
+            }
+
+            goToIndex(index) {
+                this.currentIndex = index;
+                this.updateSliderPosition();
+            }
+
+            startAutoplay() {
+                this.stopAutoplay();
+                this.autoSlideTimer = setInterval(() => this.nextSlide(), 2500);
+            }
+
+            stopAutoplay() {
+                if (this.autoSlideTimer) clearInterval(this.autoSlideTimer);
+            }
+
+            /* Touch / Drag Computations */
+            dragStart(e) {
+                this.isDragging = true;
+                this.startX = this.getPositionX(e);
+                this.stopAutoplay();
+                this.track.style.transition = 'none';
+                this.animationId = requestAnimationFrame(() => this.dragAnimation());
+            }
+
+            dragMove(e) {
+                if (!this.isDragging) return;
+                const currentX = this.getPositionX(e);
+                const diff = currentX - this.startX;
+                this.currentTranslate = this.prevTranslate + diff;
+            }
+
+            dragEnd() {
+                this.isDragging = false;
+                cancelAnimationFrame(this.animationId);
+                this.track.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
+
+                const movedBy = this.currentTranslate - this.prevTranslate;
+                const cardWidth = this.container.offsetWidth / this.cardsVisible;
+                
+                // Threshold logic to register a full change step
+                if (movedBy < -cardWidth / 3) this.nextSlide();
+                else if (movedBy > cardWidth / 3) this.prevSlide();
+                else this.updateSliderPosition();
+
+                this.startAutoplay();
+            }
+
+            getPositionX(e) {
+                return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+            }
+
+            dragAnimation() {
+                if (this.isDragging) {
+                    this.track.style.transform = `translateX(${this.currentTranslate}px)`;
+                    requestAnimationFrame(() => this.dragAnimation());
+                }
+            }
+        }
+    </script>
 </body>
 </html>
